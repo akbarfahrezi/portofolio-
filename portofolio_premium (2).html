@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Profesional | Muhammad Akbar Fahrezi</title>
+    
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Memuat Font Google (Poppins & Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Memuat FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6', // Blue 500
+                        secondary: '#14b8a6', // Teal 500
+                        dark: '#0f172a', // Slate 900
+                        card: '#1e293b', // Slate 800
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        /* Kustomisasi Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        /* Efek Teks Gradasi */
+        .text-gradient {
+            background: linear-gradient(to right, #3b82f6, #2dd4bf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animasi Fade In */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Efek Glassmorphism untuk Navbar */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-heading font-bold text-2xl tracking-tighter text-white">
+                        <span class="text-primary">AF</span><span class="text-secondary">.</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beranda" class="text-gray-300 hover:text-white transition duration-300 text-sm font-medium">Beranda</a>
+                    <a href="#tentang" class="text-gray-300 hover:text-white transition duration-300 text-sm font-medium">Profil</a>
+                    <a href="#pengalaman" class="text-gray-300 hover:text-white transition duration-300 text-sm font-medium">Pengalaman</a>
+                    <a href="#penelitian" class="text-gray-300 hover:text-white transition duration-300 text-sm font-medium">Riset & Proyek</a>
+                    <a href="#kontak" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-medium hover:shadow-lg hover:shadow-primary/30 transition duration-300 transform hover:-translate-y-0.5 text-sm">
+                        Hubungi Saya
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-card border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#beranda" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Beranda</a>
+                <a href="#tentang" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Profil</a>
+                <a href="#pengalaman" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Pengalaman</a>
+                <a href="#penelitian" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Riset & Proyek</a>
+                <a href="#kontak" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:text-white hover:bg-gray-700">Hubungi Saya</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="pt-32 pb-20 md:pt-48 md:pb-32 px-4 relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse"></div>
+        <div class="absolute top-40 right-10 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse delay-700"></div>
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
+            <div class="w-full md:w-3/5 text-center md:text-left mb-12 md:mb-0">
+                <p class="text-secondary font-medium tracking-wide mb-3 fade-in-up">👋 Halo, perkenalkan saya</p>
+                <h1 class="font-heading text-4xl md:text-6xl font-bold text-white mb-4 leading-tight fade-in-up delay-100">
+                    Muhammad Akbar Fahrezi <br>
+                    <span class="text-gradient">Informatics Student.</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl fade-in-up delay-200">
+                    Mahasiswa Universitas Mulawarman dengan minat besar pada teknologi informasi, literasi digital, dan pemeliharaan infrastruktur jaringan. Siap berkontribusi menciptakan solusi teknologi yang inovatif.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start fade-in-up delay-300">
+                    <a href="#pengalaman" class="px-8 py-3.5 rounded-full bg-white text-dark font-semibold hover:bg-gray-200 transition duration-300 flex items-center justify-center gap-2">
+                        Lihat Profil <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#kontak" class="px-8 py-3.5 rounded-full border border-gray-600 text-white font-semibold hover:border-gray-400 hover:bg-gray-800 transition duration-300 flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i> Hubungi Saya
+                    </a>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-2/5 flex justify-center fade-in-up delay-300">
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full blur-2xl opacity-40"></div>
+                    <img src="latar_putih.jpeg" alt="Foto Akbar" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-gray-800 shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="py-20 bg-card border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+                        <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition duration-500 z-10"></div>
+                        <img src="pembicara.jpeg" alt="Tentang Saya" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">Tentang <span class="text-primary">Saya</span></h2>
+                    <p class="text-gray-400 mb-4 leading-relaxed text-lg">
+                        Saya adalah Mahasiswa Informatika di <span class="text-white font-medium">Universitas Mulawarman</span> yang berdomisili di Samarinda. Saya sangat antusias terhadap perkembangan teknologi informasi dan perannya dalam transformasi digital.
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed text-lg">
+                        Latar belakang saya menggabungkan pengetahuan teknis dari pendidikan Teknik Komputer Jaringan (TKJ), pengalaman nyata dalam <span class="text-secondary font-medium">pemeliharaan jaringan</span> dan pengajaran, serta *soft skills* kepemimpinan dari keterlibatan aktif di berbagai organisasi kemahasiswaan.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-dark p-4 rounded-xl border border-gray-800">
+                            <h3 class="text-primary font-bold text-xl mb-1">Kepemimpinan</h3>
+                            <p class="text-gray-500 text-sm">Aktif memimpin & mengelola tim di HIMA Unmul</p>
+                        </div>
+                        <div class="bg-dark p-4 rounded-xl border border-gray-800">
+                            <h3 class="text-secondary font-bold text-xl mb-1">Adaptif</h3>
+                            <p class="text-gray-500 text-sm">Cepat belajar & berorientasi pada pemecahan masalah</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="pengalaman" class="py-24 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Perjalanan <span class="text-gradient">Karir & Pendidikan</span></h2>
+                <p class="text-gray-400">Jejak akademis, pengalaman profesional, dan magang saya.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Kolom Pendidikan -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3"><i class="fas fa-graduation-cap text-primary"></i> Riwayat Pendidikan</h3>
+                    <div class="relative border-l-2 border-gray-800 ml-3 space-y-8">
+                        <div class="relative pl-8">
+                            <div class="absolute w-5 h-5 bg-primary rounded-full -left-[11px] top-1 border-4 border-dark"></div>
+                            <h4 class="text-xl font-bold text-white">S1 Teknik Informatika</h4>
+                            <p class="text-secondary font-medium mb-2">Universitas Mulawarman</p>
+                            <span class="text-xs font-semibold bg-gray-800 text-gray-300 px-3 py-1 rounded-full">Juli 2021 – Juli 2026 (Perkiraan)</span>
+                            <p class="text-gray-400 mt-3 text-sm">Fokus pada rekayasa perangkat lunak, algoritma, serta teknologi informasi terkini. Aktif dalam organisasi fakultas dan himpunan.</p>
+                        </div>
+                        <div class="relative pl-8">
+                            <div class="absolute w-5 h-5 bg-gray-600 rounded-full -left-[11px] top-1 border-4 border-dark"></div>
+                            <h4 class="text-xl font-bold text-white">Teknik Komputer & Jaringan (TKJ)</h4>
+                            <p class="text-gray-400 font-medium mb-2">SMK Negeri 7 Samarinda</p>
+                            <span class="text-xs font-semibold bg-gray-800 text-gray-300 px-3 py-1 rounded-full">Juni 2018 – Juni 2021</span>
+                            <p class="text-gray-400 mt-3 text-sm">Mempelajari dasar-dasar infrastruktur jaringan, perakitan komputer, dan administrasi sistem server dasar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolom Pengalaman -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3"><i class="fas fa-briefcase text-secondary"></i> Pengalaman Kerja & Magang</h3>
+                    <div class="relative border-l-2 border-gray-800 ml-3 space-y-8">
+                        <div class="relative pl-8">
+                            <div class="absolute w-5 h-5 bg-secondary rounded-full -left-[11px] top-1 border-4 border-dark"></div>
+                            <h4 class="text-xl font-bold text-white">Store Crew</h4>
+                            <p class="text-secondary font-medium mb-2">HD Store Samarinda</p>
+                            <span class="text-xs font-semibold bg-gray-800 text-gray-300 px-3 py-1 rounded-full">Jan 2025 – Jun 2025</span>
+                            <ul class="text-gray-400 mt-3 text-sm list-disc pl-4 space-y-1">
+                                <li>Mengelola stok barang untuk memastikan ketersediaan dan akurasi persediaan produk.</li>
+                                <li>Memproses transaksi penjualan pelanggan secara cepat dan akurat.</li>
+                                <li>Membuat konten foto dan video kreatif untuk mendukung kegiatan pemasaran toko.</li>
+                            </ul>
+                        </div>
+                        <div class="relative pl-8">
+                            <div class="absolute w-5 h-5 bg-secondary rounded-full -left-[11px] top-1 border-4 border-dark"></div>
+                            <h4 class="text-xl font-bold text-white">Staf Pengajar (Magang)</h4>
+                            <p class="text-gray-400 font-medium mb-2">SMK TI Airlangga</p>
+                            <span class="text-xs font-semibold bg-gray-800 text-gray-300 px-3 py-1 rounded-full">Sep 2024 – Okt 2024</span>
+                            <ul class="text-gray-400 mt-3 text-sm list-disc pl-4 space-y-1">
+                                <li>Mengajar siswa kelas DKV mengenai dasar-dasar desain grafis.</li>
+                                <li>Membimbing siswa PPLG (Kelas 10 & 11) dalam mata pelajaran algoritma pemrograman dan implementasi mikrokontroler.</li>
+                            </ul>
+                        </div>
+                        <div class="relative pl-8">
+                            <div class="absolute w-5 h-5 bg-gray-600 rounded-full -left-[11px] top-1 border-4 border-dark"></div>
+                            <h4 class="text-xl font-bold text-white">Teknisi Jaringan (Magang)</h4>
+                            <p class="text-gray-400 font-medium mb-2">PT Patria Lintas Jaya</p>
+                            <span class="text-xs font-semibold bg-gray-800 text-gray-300 px-3 py-1 rounded-full">Jan 2020 – Mar 2020</span>
+                            <p class="text-gray-400 mt-3 text-sm">
+                                Melakukan pemeliharaan (*maintenance*) jaringan komputer untuk klien, baik di lokasi kantor (*site*) maupun pengaturan jaringan area perkebunan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengalaman Organisasi -->
+    <section class="py-16 bg-card border-y border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-10 text-center">Pengalaman <span class="text-primary">Organisasi</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-dark p-6 rounded-xl border border-gray-700 hover:border-primary transition duration-300">
+                    <i class="fas fa-users-cog text-primary text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-2">Ketua Panitia Pengkaderan (2023)</h3>
+                    <p class="text-gray-400 text-sm">Himpunan Mahasiswa Informatika, Universitas Mulawarman.</p>
+                    <p class="text-gray-500 text-xs mt-2">Memimpin kepanitiaan, menyusun strategi acara, dan mengelola SDM untuk menyukseskan program pengkaderan mahasiswa baru.</p>
+                </div>
+                
+                <div class="bg-dark p-6 rounded-xl border border-gray-700 hover:border-secondary transition duration-300">
+                    <i class="fas fa-handshake text-secondary text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-2">Wakil Ketua Departemen Eksternal</h3>
+                    <p class="text-gray-400 text-sm">Himpunan Mahasiswa Informatika, Universitas Mulawarman.</p>
+                    <p class="text-gray-500 text-xs mt-2">Menjalin dan menjaga hubungan baik dengan pihak luar kampus, sponsor, dan organisasi kemahasiswaan lainnya.</p>
+                </div>
+
+                <div class="bg-dark p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition duration-300">
+                    <i class="fas fa-bullhorn text-blue-400 text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-2">Staf Hubungan Masyarakat (Humas)</h3>
+                    <p class="text-gray-400 text-sm">Himpunan Mahasiswa Informatika, Universitas Mulawarman.</p>
+                    <p class="text-gray-500 text-xs mt-2">Bertanggung jawab atas komunikasi publik, penyebaran informasi, dan pembentukan citra positif organisasi.</p>
+                </div>
+
+                <div class="bg-dark p-6 rounded-xl border border-gray-700 hover:border-purple-400 transition duration-300">
+                    <i class="fas fa-gavel text-purple-400 text-3xl mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-2">Staf Badan Legislatif Mahasiswa</h3>
+                    <p class="text-gray-400 text-sm">Fakultas Teknik, Universitas Mulawarman.</p>
+                    <p class="text-gray-500 text-xs mt-2">Terlibat dalam fungsi legislasi, pengawasan, dan aspirasi mahasiswa di tingkat fakultas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research & Projects Section -->
+    <section id="penelitian" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Skripsi & <span class="text-secondary">Proyek</span></h2>
+                <p class="text-gray-400">Fokus penelitian tugas akhir dan representasi proyek dari pengalaman saya.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Kartu Skripsi Utama (Lebar Penuh) -->
+                <div class="bg-card rounded-2xl overflow-hidden border-2 border-primary shadow-[0_0_20px_rgba(59,130,246,0.15)] flex flex-col relative md:col-span-2 lg:col-span-3 transform transition duration-500 hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-primary to-blue-600 text-white text-sm font-bold px-5 py-2 rounded-bl-xl z-10 shadow-lg">
+                        <i class="fas fa-graduation-cap mr-2"></i>Skripsi (Tugas Akhir)
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col md:flex-row gap-6 items-start mt-4 md:mt-0">
+                        <div class="w-16 h-16 bg-dark rounded-full flex items-center justify-center shrink-0 border border-primary/50 shadow-inner">
+                            <i class="fas fa-book text-primary text-2xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <!-- GANTI JUDUL SKRIPSI DI SINI -->
+                            <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">PENERAPAN AUGMENTED REALITY DENGAN METODE MARKERLESS SEBAGAI MEDIA PENGENALAN SISTEM KERJA MESIN MOTOR 4 LANGKAH</h3>
+                            
+                            <!-- GANTI DESKRIPSI SKRIPSI DI SINI -->
+                            <p class="text-gray-400 text-base mb-6 leading-relaxed max-w-4xl">
+                                Penelitian ini berfokus pada pengembangan aplikasi edukasi interaktif yang memvisualisasikan cara kerja internal mesin motor 4 tak secara 3D. Dengan menerapkan teknologi <strong>Augmented Reality (AR) Markerless</strong> (pendeteksian bidang datar), simulasi proses <i>intake, kompresi, pembakaran, dan pembuangan</i> dapat diproyeksikan langsung ke lingkungan nyata pengguna tanpa memerlukan penanda fisik (marker) khusus. Proyek ini bertujuan menghadirkan alternatif alat peraga otomotif yang modern dan imersif guna meningkatkan pemahaman siswa atau masyarakat umum secara visual dan aplikatif.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-4 py-1.5 bg-dark border border-primary/30 text-primary font-medium text-sm rounded-full">Augmented Reality</span>
+                                <span class="px-4 py-1.5 bg-dark border border-secondary/30 text-secondary font-medium text-sm rounded-full">Markerless Tracking</span>
+                                <span class="px-4 py-1.5 bg-dark border border-gray-700 text-gray-300 text-sm rounded-full">Universitas Mulawarman</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu Proyek Edukasi -->
+                <div class="bg-card rounded-2xl overflow-hidden border border-gray-800 hover:border-secondary transition duration-300 flex flex-col">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="w-12 h-12 bg-dark rounded-full flex items-center justify-center mb-4 border border-gray-700">
+                            <i class="fas fa-microchip text-secondary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Modul Pembelajaran Algoritma & Mikrokontroler Dasar</h3>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow">
+                            Modul dan silabus praktis yang saya susun saat menjadi staf pengajar di SMK TI Airlangga. Dirancang khusus agar siswa kejuruan (PPLG) lebih mudah memahami logika pemrograman fisik.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-3 py-1 bg-dark border border-gray-700 text-gray-300 text-xs rounded-md">Education</span>
+                            <span class="px-3 py-1 bg-dark border border-gray-700 text-gray-300 text-xs rounded-md">Arduino</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu Konten Digital -->
+                <div class="bg-card rounded-2xl overflow-hidden border border-gray-800 hover:border-blue-400 transition duration-300 flex flex-col">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="w-12 h-12 bg-dark rounded-full flex items-center justify-center mb-4 border border-gray-700">
+                            <i class="fas fa-camera text-blue-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Manajemen Konten & Media Pemasaran</h3>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow">
+                            Pengembangan materi promosi visual (Foto & Video) selama bekerja di HD Store Samarinda. Menggabungkan kreativitas media dan pemahaman desain dasar untuk menarik pelanggan.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-3 py-1 bg-dark border border-gray-700 text-gray-300 text-xs rounded-md">Videography</span>
+                            <span class="px-3 py-1 bg-dark border border-gray-700 text-gray-300 text-xs rounded-md">Digital Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 bg-card border-t border-gray-800 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-10">Kompetensi & <span class="text-primary">Keahlian</span></h2>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <!-- Hard Skills -->
+                <div class="px-5 py-3 bg-dark border border-gray-700 rounded-full flex items-center gap-3 hover:border-primary transition duration-300">
+                    <i class="fa-solid fa-code text-white text-xl"></i> <span class="text-gray-300 font-medium">Pemrograman Dasar</span>
+                </div>
+                <div class="px-5 py-3 bg-dark border border-gray-700 rounded-full flex items-center gap-3 hover:border-secondary transition duration-300">
+                    <i class="fa-solid fa-network-wired text-secondary text-xl"></i> <span class="text-gray-300 font-medium">Pemeliharaan Jaringan</span>
+                </div>
+                <div class="px-5 py-3 bg-dark border border-gray-700 rounded-full flex items-center gap-3 hover:border-orange-400 transition duration-300">
+                    <i class="fa-solid fa-camera-retro text-orange-400 text-xl"></i> <span class="text-gray-300 font-medium">Kreativitas Media (Foto/Video)</span>
+                </div>
+                <div class="px-5 py-3 bg-dark border border-gray-700 rounded-full flex items-center gap-3 hover:border-blue-400 transition duration-300">
+                    <i class="fa-brands fa-microsoft text-blue-400 text-xl"></i> <span class="text-gray-300 font-medium">Microsoft Office</span>
+                </div>
+                
+                <!-- Soft & Management Skills -->
+                <div class="px-5 py-3 bg-dark border border-gray-700 rounded-full flex items-center gap-3 hover:border-purple-500 transition duration-300">
+                    <i class="fa-solid fa-chess-knight text-purple-400 text-xl"></i> <span class="text-gray-300 font-medium">Kepemimpinan</span>
+                </div>
+                <div class="px-5 py-3 bg-dark border border-gray-700 rounded-full flex items-center gap-3 hover:border-green-500 transition duration-300">
+                    <i class="fa-solid fa-comments text-green-400 text-xl"></i> <span class="text-gray-300 font-medium">Hubungan Masyarakat</span>
+                </div>
+                <div class="px-5 py-3 bg-dark border border-gray-700 rounded-full flex items-center gap-3 hover:border-yellow-500 transition duration-300">
+                    <i class="fa-solid fa-boxes-stacked text-yellow-500 text-xl"></i> <span class="text-gray-300 font-medium">Manajemen Stok Barang</span>
+                </div>
+                <div class="px-5 py-3 bg-dark border border-gray-700 rounded-full flex items-center gap-3 hover:border-pink-500 transition duration-300">
+                    <i class="fa-solid fa-headset text-pink-500 text-xl"></i> <span class="text-gray-300 font-medium">Pelayanan Pelanggan</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="py-24 bg-gradient-to-b from-dark to-card border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-heading text-4xl font-bold text-white mb-6">Mari Berkolaborasi!</h2>
+            <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
+                Saya sangat terbuka terhadap kesempatan magang maupun kerja penuh waktu. Jika Anda mencari individu yang adaptif, siap belajar, dan mampu berkontribusi dalam tim, mari terhubung!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="mailto:akbareky31@gmail.com" class="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-primary to-blue-600 text-white font-bold text-md hover:shadow-xl hover:shadow-primary/40 transition duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-envelope mr-2"></i> akbareky31@gmail.com
+                </a>
+                <a href="https://wa.me/62895704428143" target="_blank" class="inline-block px-8 py-4 rounded-full bg-green-600 text-white font-bold text-md hover:shadow-xl hover:shadow-green-500/40 transition duration-300 transform hover:-translate-y-1">
+                    <i class="fab fa-whatsapp mr-2"></i> +62 895-7044-28143
+                </a>
+            </div>
+
+            <div class="mt-12 flex justify-center gap-6 text-gray-500">
+                <p><i class="fas fa-map-marker-alt mr-2"></i> Samarinda, Kalimantan Timur, Indonesia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-card py-8 border-t border-gray-800 text-center">
+        <p class="text-gray-500 text-sm">
+            &copy; 2026 Muhammad Akbar Fahrezi.
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Efek transparan/blur pada Navbar saat di-scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-lg', 'border-b', 'border-gray-800');
+            } else {
+                navbar.classList.remove('shadow-lg', 'border-b', 'border-gray-800');
+            }
+        });
+
+        // Toggle Menu Mobile
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Menutup menu mobile saat link diklik
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
