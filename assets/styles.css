@@ -476,7 +476,17 @@ main {
 }
 
 .portrait {
+  position: relative;
   margin: 0;
+}
+
+/* Bingkai aksen bergeser: menandai potret sebagai satu-satunya titik fokus hero. */
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 14px -14px -14px 14px;
+  border: 1px solid var(--accent);
+  pointer-events: none;
 }
 
 .portrait img {
@@ -506,8 +516,10 @@ main {
 
 .facts dd {
   margin: 0;
-  font-size: 0.9375rem;
-  line-height: 1.4;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.35;
 }
 
 /* ---------- Sections ---------- */
@@ -611,7 +623,20 @@ main {
 }
 
 .job__org {
-  margin: 6px 0 14px;
+  margin: 6px 0 6px;
+}
+
+.job__stack {
+  margin: 0 0 14px;
+}
+
+.job__flag {
+  display: block;
+  width: max-content;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
 }
 
 .job ul {
@@ -835,6 +860,24 @@ main {
   letter-spacing: 0.06em;
   color: var(--muted);
   text-transform: lowercase;
+}
+
+/* Label bidang keahlian dari CV: label nyata, bukan hiasan, sehingga tidak interaktif. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 10px 16px;
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
 }
 
 .skills {
