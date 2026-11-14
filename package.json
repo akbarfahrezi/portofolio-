@@ -2,9 +2,9 @@
   "name": "portofolio-akbar-fahrezi",
   "private": true,
   "version": "1.0.0",
-  "description": "Halaman portofolio statis Muhammad Akbar Fahrezi. Skrip interaksi ditulis dalam TypeScript dan dikompilasi ke assets/main.js.",
+  "description": "Halaman portofolio statis Muhammad Akbar Fahrezi. Skrip interaksi ditulis dalam TypeScript di src/main.ts dan dikompilasi ke assets/main.js dengan npm run compile.",
   "scripts": {
-    "build": "tsc",
+    "compile": "tsc",
     "watch": "tsc --watch"
   },
   "devDependencies": {
