@@ -2,7 +2,7 @@
 /*
  * Interaksi halaman portofolio: tema, menu seluler, scroll reveal,
  * scroll spy, lightbox, dan tahun pada footer.
- * Dikompilasi dengan `npm run build` menjadi assets/main.js.
+ * Dikompilasi dengan `npm run compile` menjadi assets/main.js.
  */
 (function () {
     "use strict";
